@@ -13,14 +13,11 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   bool anyCategory = true;
-  List<JokeCategory> categories = [];
-  List<BlacklistFlags> blacklistFlags = [...BlacklistFlags.values];
+  late Settings settings;
 
   @override
   void initState() {
-    final settings = context.read<Settings>();
-    categories = settings.categories;
-    blacklistFlags = settings.blacklistFlags;
+    settings = context.read<Settings>();
     anyCategory = settings.categories.isEmpty;
     super.initState();
   }
@@ -37,6 +34,16 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         body: Builder(builder: (context) {
           return SettingsList(sections: [
+            SettingsSection(
+              title: const Text("Text-to-speech"),
+              tiles: [
+                SettingsTile.switchTile(
+                  initialValue: settings.enableTextToSpeech,
+                  onToggle: toggleEnableTextToSpeech,
+                  title: const Text("Enabled"),
+                )
+              ],
+            ),
             SettingsSection(title: const Text("Category"), tiles: [
               SettingsTile.switchTile(
                 initialValue: anyCategory,
@@ -45,7 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               for (final category in JokeCategory.values)
                 SettingsTile.switchTile(
-                  initialValue: categories.contains(category),
+                  initialValue: settings.categories.contains(category),
                   enabled: !anyCategory,
                   onToggle: toggleCategory(category),
                   title: Text(category.name),
@@ -56,7 +63,7 @@ class _SettingsPageState extends State<SettingsPage> {
               tiles: [
                 for (final flag in BlacklistFlags.values)
                   SettingsTile.switchTile(
-                    initialValue: blacklistFlags.contains(flag),
+                    initialValue: settings.blacklistFlags.contains(flag),
                     onToggle: toggleBlackListFlag(flag),
                     title: Text(flag.name),
                   ),
@@ -70,11 +77,17 @@ class _SettingsPageState extends State<SettingsPage> {
 
   onPopInvoked(bool didPop) async {
     final navigator = Navigator.of(context);
-    final settings = context.read<Settings>();
-    settings.categories = anyCategory ? [] : categories;
-    settings.blacklistFlags = blacklistFlags;
+    if (anyCategory) {
+      settings.categories = [];
+    }
     await settings.save(settings);
     if (navigator.canPop()) navigator.pop();
+  }
+
+  toggleEnableTextToSpeech(value) {
+    setState(() {
+      settings.enableTextToSpeech = value;
+    });
   }
 
   toggleAnyCategory(value) {
@@ -86,7 +99,7 @@ class _SettingsPageState extends State<SettingsPage> {
   void Function(bool value) toggleCategory(JokeCategory category) {
     return (value) {
       setState(() {
-        value ? categories.add(category) : categories.remove(category);
+        value ? settings.categories.add(category) : settings.categories.remove(category);
       });
     };
   }
@@ -94,7 +107,7 @@ class _SettingsPageState extends State<SettingsPage> {
   void Function(bool value) toggleBlackListFlag(BlacklistFlags flag) {
     return (value) {
       setState(() {
-        value ? blacklistFlags.add(flag) : blacklistFlags.remove(flag);
+        value ? settings.blacklistFlags.add(flag) : settings.blacklistFlags.remove(flag);
       });
     };
   }

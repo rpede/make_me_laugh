@@ -1,10 +1,18 @@
+import 'package:cloud_text_to_speech/cloud_text_to_speech.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:make_me_laugh/data/data_source.dart';
 import 'package:make_me_laugh/data/settings.dart';
 import 'package:make_me_laugh/joke_page.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
+  TtsMicrosoft.init(
+    subscriptionKey: dotenv.env["TTS_SUBSCRIPTION_KEY"]!,
+    region: dotenv.env["TTS_REGION"]!,
+    withLogs: true,
+  );
   runApp(const MyApp());
 }
 

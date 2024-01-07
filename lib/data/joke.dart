@@ -29,26 +29,26 @@ class Joke {
     setup = json['setup'];
     delivery = json['delivery'];
     joke = json['joke'];
-    flags = json['flags'] != null ? new Flags.fromJson(json['flags']) : null;
+    flags = json['flags'] != null ? Flags.fromJson(json['flags']) : null;
     safe = json['safe'];
     id = json['id'];
     lang = json['lang'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['error'] = this.error;
-    data['category'] = this.category;
-    data['type'] = this.type;
-    data['setup'] = this.setup;
-    data['delivery'] = this.delivery;
-    data['joke'] = this.joke;
-    if (this.flags != null) {
-      data['flags'] = this.flags!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['error'] = error;
+    data['category'] = category;
+    data['type'] = type;
+    data['setup'] = setup;
+    data['delivery'] = delivery;
+    data['joke'] = joke;
+    if (flags != null) {
+      data['flags'] = flags!.toJson();
     }
-    data['safe'] = this.safe;
-    data['id'] = this.id;
-    data['lang'] = this.lang;
+    data['safe'] = safe;
+    data['id'] = id;
+    data['lang'] = lang;
     return data;
   }
 }
@@ -79,13 +79,13 @@ class Flags {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nsfw'] = this.nsfw;
-    data['religious'] = this.religious;
-    data['political'] = this.political;
-    data['racist'] = this.racist;
-    data['sexist'] = this.sexist;
-    data['explicit'] = this.explicit;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['nsfw'] = nsfw;
+    data['religious'] = religious;
+    data['political'] = political;
+    data['racist'] = racist;
+    data['sexist'] = sexist;
+    data['explicit'] = explicit;
     return data;
   }
 }

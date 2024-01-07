@@ -10,7 +10,7 @@ class DataSource {
     final path = settings.categories.isEmpty ? "Any" : settings.categories.map((e) => e.name).join(",");
     final query =
         "blacklistFlags=${settings.blacklistFlags.map((e) => e.name).join(',')}";
-    final url = "https://v2.jokeapi.dev/joke/${path}?${query}";
+    final url = "https://v2.jokeapi.dev/joke/$path?$query";
     print(url);
     final response = await http.get(Uri.parse(url));
     final map = json.decode(response.body);
