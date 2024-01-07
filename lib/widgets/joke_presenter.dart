@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:make_me_laugh/data/joke.dart';
+import 'package:make_me_laugh/data/joke_dto.dart';
 import 'package:make_me_laugh/widgets/joke_text.dart';
 
 class JokePresenter extends StatelessWidget {
-  final Joke joke;
+  final JokeDto joke;
   const JokePresenter(this.joke, {super.key});
 
   @override

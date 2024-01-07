@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:make_me_laugh/data/joke.dart';
+import 'package:make_me_laugh/data/joke_dto.dart';
 
 const Map<String, dynamic> singlePartJoke = {
   "error": false,
@@ -41,14 +41,14 @@ const Map<String, dynamic> twoPartJoke = {
 
 void main() {
   test("Deserialize single part joke", () {
-    final joke = Joke.fromJson(singlePartJoke);
+    final joke = JokeDto.fromJson(singlePartJoke);
     expect(joke.type, "single");
     expect(joke.joke,
         "Being a self-taught developer is almost the same as being a cut neck chicken because you have no sense of direction in the beginning.");
   });
 
   test("Deserialize two part joke", () {
-    final joke = Joke.fromJson(twoPartJoke);
+    final joke = JokeDto.fromJson(twoPartJoke);
     expect(joke.type, "twopart");
     expect(joke.setup, "why do python programmers wear glasses?");
     expect(joke.delivery, "Because they can't C.");

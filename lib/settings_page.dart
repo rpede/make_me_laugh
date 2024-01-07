@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:make_me_laugh/data/joke.dart';
+import 'package:make_me_laugh/data/joke_dto.dart';
 import 'package:make_me_laugh/data/settings.dart';
 import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';

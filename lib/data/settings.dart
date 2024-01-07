@@ -1,5 +1,5 @@
 import 'package:localstorage/localstorage.dart';
-import 'package:make_me_laugh/data/joke.dart';
+import 'package:make_me_laugh/data/joke_dto.dart';
 
 class Settings {
   final LocalStorage _storage = LocalStorage('settings');

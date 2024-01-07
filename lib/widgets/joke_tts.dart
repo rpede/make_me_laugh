@@ -1,10 +1,10 @@
 import 'package:cloud_text_to_speech/cloud_text_to_speech.dart';
 import 'package:flutter/material.dart';
-import 'package:make_me_laugh/data/joke.dart';
+import 'package:make_me_laugh/data/joke_dto.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class JokeTts extends StatefulWidget {
-  final Joke joke;
+  final JokeDto joke;
   const JokeTts(this.joke, {super.key});
 
   @override

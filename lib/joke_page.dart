@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:make_me_laugh/data/data_source.dart';
-import 'package:make_me_laugh/data/joke.dart';
+import 'package:make_me_laugh/data/joke_dto.dart';
 import 'package:make_me_laugh/data/settings.dart';
 import 'package:make_me_laugh/settings_page.dart';
 import 'package:make_me_laugh/widgets/joke_presenter.dart';
@@ -16,7 +16,7 @@ class JokePage extends StatefulWidget {
 }
 
 class _JokePageState extends State<JokePage> {
-  Joke? joke;
+  JokeDto? joke;
   late Settings settings;
 
   @override

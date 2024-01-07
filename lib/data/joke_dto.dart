@@ -1,4 +1,4 @@
-class Joke {
+class JokeDto {
   bool? error;
   String? category;
   String? type;
@@ -10,7 +10,7 @@ class Joke {
   int? id;
   String? lang;
 
-  Joke(
+  JokeDto(
       {this.error,
       this.category,
       this.type,
@@ -22,7 +22,7 @@ class Joke {
       this.id,
       this.lang});
 
-  Joke.fromJson(Map<String, dynamic> json) {
+  JokeDto.fromJson(Map<String, dynamic> json) {
     error = json['error'];
     category = json['category'];
     type = json['type'];
