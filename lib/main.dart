@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:make_me_laugh/data/data_source.dart';
 import 'package:make_me_laugh/data/settings.dart';
 import 'package:make_me_laugh/joke_page.dart';
+import 'package:make_me_laugh/data/text_to_speech.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -13,6 +14,7 @@ void main() async {
     region: dotenv.env["TTS_REGION"]!,
     withLogs: true,
   );
+  await Settings.init();
   runApp(const MyApp());
 }
 
@@ -25,6 +27,10 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider(create: (context) => DataSource()),
         Provider(create: (context) => Settings()..load()),
+        Provider(
+          create: (context) => TextToSpeech(),
+          dispose: (_, value) => value.dispose(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
