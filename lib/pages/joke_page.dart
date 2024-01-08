@@ -3,7 +3,7 @@ import 'package:make_me_laugh/data/data_source.dart';
 import 'package:make_me_laugh/data/joke_dto.dart';
 import 'package:make_me_laugh/data/settings.dart';
 import 'package:make_me_laugh/extensions.dart';
-import 'package:make_me_laugh/settings_page.dart';
+import 'package:make_me_laugh/pages/settings_page.dart';
 import 'package:make_me_laugh/data/text_to_speech.dart';
 import 'package:make_me_laugh/widgets/avatar.dart';
 import 'package:make_me_laugh/widgets/joke_presenter.dart';

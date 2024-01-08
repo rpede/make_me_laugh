@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:make_me_laugh/data/data_source.dart';
 import 'package:make_me_laugh/data/settings.dart';
-import 'package:make_me_laugh/joke_page.dart';
 import 'package:make_me_laugh/data/text_to_speech.dart';
+import 'package:make_me_laugh/pages/joke_page.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
