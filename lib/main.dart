@@ -1,5 +1,6 @@
 import 'package:cloud_text_to_speech/cloud_text_to_speech.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:make_me_laugh/data/data_source.dart';
 import 'package:make_me_laugh/data/settings.dart';
@@ -32,13 +33,18 @@ class MyApp extends StatelessWidget {
           dispose: (_, value) => value.dispose(),
         )
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+      child: Shortcuts(
+        shortcuts: <LogicalKeySet, Intent>{
+          LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
+        },
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: const JokePage(),
         ),
-        home: const JokePage(),
       ),
     );
   }
