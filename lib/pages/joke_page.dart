@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:make_me_laugh/data/data_source.dart';
-import 'package:make_me_laugh/data/joke_dto.dart';
-import 'package:make_me_laugh/data/settings.dart';
-import 'package:make_me_laugh/extensions.dart';
-import 'package:make_me_laugh/pages/settings_page.dart';
-import 'package:make_me_laugh/data/text_to_speech.dart';
-import 'package:make_me_laugh/widgets/avatar.dart';
-import 'package:make_me_laugh/widgets/joke_presenter.dart';
 import 'package:provider/provider.dart';
+
+import '../data/joke_dto.dart';
+import '../data/joke_service.dart';
+import '../widgets/avatar.dart';
+import '../widgets/joke_presenter.dart';
+import 'settings_page.dart';
 
 class JokePage extends StatefulWidget {
   const JokePage({super.key});
@@ -17,29 +15,22 @@ class JokePage extends StatefulWidget {
 }
 
 class _JokePageState extends State<JokePage> {
-  late Settings settings;
-  late DataSource dataSource;
-  late TextToSpeech textToSpeech;
+  late JokeService service;
 
   JokeDto? joke;
 
   @override
   void initState() {
-    settings = context.read<Settings>();
-    dataSource = context.read<DataSource>();
-    textToSpeech = context.read<TextToSpeech>();
-    _loadJoke();
     super.initState();
+    service = context.read<JokeService>();
+    _loadJoke();
   }
 
   _loadJoke() async {
     setState(() {
       joke = null;
     });
-    final newJoke = await dataSource.getJoke(settings);
-    if (settings.enableTextToSpeech) {
-      await textToSpeech.speak(newJoke.tell());
-    }
+    final newJoke = await service.tellAJoke();
     setState(() {
       joke = newJoke;
     });

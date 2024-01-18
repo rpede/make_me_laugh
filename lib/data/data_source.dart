@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:make_me_laugh/data/settings.dart';
 
 import 'joke_dto.dart';
+import 'settings.dart';
 
 class DataSource {
   Future<JokeDto> getJoke(Settings settings) async {
