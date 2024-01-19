@@ -41,7 +41,6 @@ dependencies:
   settings_ui: ^2.0.2
   localstorage: ^4.0.1+4
   audioplayers: ^5.2.1
-  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:

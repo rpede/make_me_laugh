@@ -8,7 +8,7 @@ import 'settings.dart';
 class DataSource {
   Future<JokeDto> getJoke(Settings settings) async {
     final path = settings.categories.isEmpty
-        ? "Programming"
+        ? "Any"
         : settings.categories.map((e) => e.name).join(",");
     final query =
         "blacklistFlags=${settings.blacklistFlags.map((e) => e.name).join(',')}";

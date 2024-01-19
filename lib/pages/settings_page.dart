@@ -77,16 +77,16 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         body: Builder(builder: (context) {
           return SettingsList(sections: [
-            SettingsSection(
-              title: const Text("Text-to-speech"),
-              tiles: [
-                SettingsTile.switchTile(
-                  initialValue: settings.enableTextToSpeech,
-                  onToggle: _toggleEnableTextToSpeech,
-                  title: const Text("Enabled"),
-                )
-              ],
-            ),
+            // SettingsSection(
+            //   title: const Text("Text-to-speech"),
+            //   tiles: [
+            //     SettingsTile.switchTile(
+            //       initialValue: settings.enableTextToSpeech,
+            //       onToggle: _toggleEnableTextToSpeech,
+            //       title: const Text("Enabled"),
+            //     )
+            //   ],
+            // ),
             SettingsSection(title: const Text("Category"), tiles: [
               SettingsTile.switchTile(
                 initialValue: anyCategory,
